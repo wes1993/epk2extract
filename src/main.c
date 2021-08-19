@@ -213,8 +213,8 @@ int main(int argc, char *argv[]) {
 						"Options:\n"
 						"  -c : extract to current directory instead of source file directory\n"
 						"  -s : enable signature checking for EPK files\n"
-						"  -v : set video stream type, DEFAULT: 0x1B (possible values: e.g. 0x1B for MPEG-4, 0x02 for MPEG-2)\n"
-						"  -a : set audio stream type, DEFAULT: 0x04 (possible values: e.g. 0x81 for AC-3, 0x04 for MPEG-2)\n"
+						"  -v : set video stream type, DEFAULT: 0x02 (possible values: e.g. 0x1B for MPEG-4(For AV REC), 0x02 for MPEG-2 (For DVB-T))\n"
+						"  -a : set audio stream type, DEFAULT: 0x04 (possible values: e.g. 0x81 for AC-3, 0x04 for MPEG-2 (For DVB-T), 0x1C (For AV Rec))\n"
 						"  -d : provide AES key (if not provided, the key is extracted from the dvr file)\n"
 						"  -h : display this help\n\n";
 
@@ -245,7 +245,7 @@ int main(int argc, char *argv[]) {
 	config_opts.config_dir = my_dirname(exe_dir);
 	config_opts.dest_dir = calloc(1, PATH_MAX);
 	config_opts.enableSignatureChecking = 0;
-	config_opts.video_stream_type = 0x1B; // stream type ITU_T_H264 (MPEG-4)
+	config_opts.video_stream_type = 0x02; // stream type ITU_T_H264 (MPEG-2)
 	config_opts.audio_stream_type = 0x04; // stream type ISO/IEC 13818-3 Audio (MPEG-2)
 	config_opts.aes_key_provided = false;
 
