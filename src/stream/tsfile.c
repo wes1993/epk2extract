@@ -296,7 +296,7 @@ void processTsPacket(uint8_t *packet, struct tables *PIDs, FILE *outFile){
 	uint8_t outBuf[TS_PACKET_SIZE];
 
 	int offset = 8;
-	if ((packet[7] & 0xC0) == 0xC0 || (packet[7] & 0xC0) == 0x80) {	// decrypt only scrambled packets
+	if ((packet[7] & 0xC0) == 0xC0 || (packet[7] & 0xC0) == 0x80 || (packet[7] & 0xC0) == 0x40) {	// decrypt only scrambled packets, Added 0x40 for new FW
 		// packet is encrypted, so we copy the original (readonly) for modifications
 		memcpy(outBuf, packet, TS_PACKET_SIZE);
 		// now set the pointer to the copy
